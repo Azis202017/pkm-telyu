@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pakas/app/routes/app_pages.dart';
 import '../controllers/splash_screen_controller.dart';
 import '../../../theme/color.dart';
 import '../../../theme/font.dart';
@@ -14,9 +17,9 @@ class SplashScreenView extends GetView<SplashScreenController> {
       body: GetBuilder<SplashScreenController>(
         init: SplashScreenController(),
         initState: (_) {
-          // Timer.periodic(const Duration(seconds: 2), (_) {
-          //   Get.toNamed(Routes.HOME);
-          // });
+          Timer.periodic(const Duration(seconds: 2), (_) {
+            Get.toNamed(Routes.HOME);
+          });
         },
         builder: (_) {
           return Stack(
