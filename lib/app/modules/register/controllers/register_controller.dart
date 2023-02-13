@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class RegisterController extends GetxController {
   FirebaseAuth authInstance = FirebaseAuth.instance;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   String icon = 'assets/images/show.png';
   bool isPassword = true;
   void visiblePassword() {
@@ -36,7 +38,7 @@ class RegisterController extends GetxController {
           'Password kamu terlalu lemah coba masukin password lagi',
           backgroundColor: Colors.red.shade300,
           colorText: Colors.white,
-      );
+        );
       } else if (e.code == "email-already-in-use") {
         Get.snackbar(
           'Email sudah terdaftar',
@@ -46,7 +48,28 @@ class RegisterController extends GetxController {
         );
       }
     } catch (e) {
-      print(e);
+      Get.snackbar('Terdapat error', '$e');
+    }
+  }
+
+  void registrasiUserWithGoogle() async {
+    try {
+      _googleSignIn.signOut();
+      final GoogleSignInAccount? currentUser = await _googleSignIn.signIn();
+      final isLogin = await _googleSignIn.isSignedIn();
+      if (isLogin) {
+        final GoogleSignInAuthentication? googleAuth =
+            await currentUser?.authentication;
+        final credential = GoogleAuthProvider.credential(
+          idToken: googleAuth!.idToken,
+          accessToken: googleAuth.accessToken,
+        );
+
+        await authInstance.signInWithCredential(credential);
+        Get.back();
+      }
+    } catch (error) {
+      Get.snackbar('Terdapat error', '$error');
     }
   }
 

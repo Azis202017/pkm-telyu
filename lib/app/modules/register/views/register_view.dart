@@ -88,9 +88,10 @@ class RegisterView extends GetView<RegisterController> {
                             height: 69,
                           ),
                           ButtonWidgets(
-                            text: 'Daftar',
+                            text: 'Daftar Akun',
                             background: primaryColor,
                             textStyle: buttonLinkLBold,
+                            isIconVisible: false,
                             onPressed: () {
                               controller.registerUser(
                                 email: controller.emailController.text,
@@ -103,7 +104,7 @@ class RegisterView extends GetView<RegisterController> {
                             height: 20,
                           ),
                           ButtonWidgets(
-                            text: 'Masuk dengan google',
+                            text: 'Daftar dengan google',
                             icon: 'assets/images/google.png',
                             widthIcon: 24,
                             heightIcon: 24,
@@ -111,7 +112,7 @@ class RegisterView extends GetView<RegisterController> {
                             textStyle: buttonLinkLBold.copyWith(
                               color: Colors.black,
                             ),
-                            onPressed: () {},
+                            onPressed: controller.registrasiUserWithGoogle,
                             background: borderColorInput,
                           ),
                           const SizedBox(

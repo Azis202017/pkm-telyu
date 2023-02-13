@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pakas/app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
   FirebaseAuth authInstance = FirebaseAuth.instance;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
   String icon = 'assets/images/show.png';
   bool isPassword = true;
   void visiblePassword() {
@@ -42,6 +45,27 @@ class LoginController extends GetxController {
           colorText: Colors.white,
         );
       }
+    }
+  }
+
+  void loginUserWithGoogle() async {
+    try {
+      _googleSignIn.signOut();
+      final GoogleSignInAccount? currentUser = await _googleSignIn.signIn();
+      final isLogin = await _googleSignIn.isSignedIn();
+      if (isLogin) {
+        final GoogleSignInAuthentication? googleAuth =
+            await currentUser?.authentication;
+        final credential = GoogleAuthProvider.credential(
+          idToken: googleAuth!.idToken,
+          accessToken: googleAuth.accessToken,
+        );
+
+        await authInstance.signInWithCredential(credential);
+        Get.offAllNamed(Routes.HOME);
+      }
+    } catch (error) {
+      Get.snackbar('Terdapat error', '$error');
     }
   }
 

@@ -105,10 +105,11 @@ class LoginView extends GetView<LoginController> {
                             widthIcon: 24,
                             heightIcon: 24,
                             textColor: Colors.black,
+                            isIconVisible: false,
                             textStyle: buttonLinkLBold.copyWith(
                               color: Colors.black,
                             ),
-                            onPressed: () {},
+                            onPressed: controller.loginUserWithGoogle,
                             background: borderColorInput,
                           ),
                           const SizedBox(

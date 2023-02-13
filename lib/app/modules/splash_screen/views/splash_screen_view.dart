@@ -43,7 +43,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
                       height: 283,
                     ),
                     Text(
-                      'TriftMee',
+                      'ThriftMee',
                       style: headline1Bold.copyWith(
                         color: primaryColor,
                       ),
