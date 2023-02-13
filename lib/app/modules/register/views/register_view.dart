@@ -28,6 +28,22 @@ class RegisterView extends GetView<RegisterController> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 24,
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                  ),
+                ),
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
@@ -49,7 +65,7 @@ class RegisterView extends GetView<RegisterController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Masuk', style: headline4Bold),
+                          Text('Daftar', style: headline4Bold),
                           const SizedBox(height: 29),
                           Text('Email', style: headline4Bold),
                           const SizedBox(height: 13),
@@ -72,10 +88,16 @@ class RegisterView extends GetView<RegisterController> {
                             height: 69,
                           ),
                           ButtonWidgets(
-                            text: 'Masuk',
+                            text: 'Daftar',
                             background: primaryColor,
                             textStyle: buttonLinkLBold,
-                            onPressed: () {},
+                            onPressed: () {
+                              controller.registerUser(
+                                email: controller.emailController.text,
+                                password: controller.passwordController.text,
+                              );
+                              Get.back();
+                            },
                           ),
                           const SizedBox(
                             height: 20,
@@ -95,20 +117,25 @@ class RegisterView extends GetView<RegisterController> {
                           const SizedBox(
                             height: 20,
                           ),
-                          Center(
-                            child: RichText(
-                              text: TextSpan(
-                                text: 'Sudah punya akun?',
-                                style: textDescription,
-                                children: [
-                                  TextSpan(
-                                    text: ' Login disini',
-                                    style: textDescription.copyWith(
-                                      color: primaryColor,
-                                      fontWeight: FontWeight.w700,
+                          GestureDetector(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: Center(
+                              child: RichText(
+                                text: TextSpan(
+                                  text: 'Sudah punya akun?',
+                                  style: textDescription,
+                                  children: [
+                                    TextSpan(
+                                      text: ' Login disini',
+                                      style: textDescription.copyWith(
+                                        color: primaryColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),

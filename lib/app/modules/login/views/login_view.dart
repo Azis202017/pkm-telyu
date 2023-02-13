@@ -88,7 +88,13 @@ class LoginView extends GetView<LoginController> {
                             text: 'Masuk',
                             background: primaryColor,
                             textStyle: buttonLinkLBold,
-                            onPressed: () {},
+                            onPressed: () {
+                              controller.loginUser(
+                                email: controller.emailController.text,
+                                password: controller.passwordController.text,
+                              );
+                             
+                            },
                           ),
                           const SizedBox(
                             height: 20,
