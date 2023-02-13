@@ -8,6 +8,7 @@ class LoginController extends GetxController {
   FirebaseAuth authInstance = FirebaseAuth.instance;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   String icon = 'assets/images/show.png';

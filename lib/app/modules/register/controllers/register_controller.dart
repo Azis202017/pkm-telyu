@@ -20,6 +20,7 @@ class RegisterController extends GetxController {
 
   Future<void> registerUser(
       {required String email, required String password}) async {
+    
     try {
       await authInstance.createUserWithEmailAndPassword(
         email: email,

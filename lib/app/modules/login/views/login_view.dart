@@ -48,6 +48,7 @@ class LoginView extends GetView<LoginController> {
                     child: SingleChildScrollView(
                       child: Form(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
+                        key: controller.formKey,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -94,10 +95,15 @@ class LoginView extends GetView<LoginController> {
                               textStyle: buttonLinkLBold,
                               isIconVisible: false,
                               onPressed: () {
-                                controller.loginUser(
-                                  email: controller.emailController.text,
-                                  password: controller.passwordController.text,
-                                );
+                                final isValidForm =
+                                    controller.formKey.currentState!.validate();
+                                if (isValidForm) {
+                                  controller.loginUser(
+                                    email: controller.emailController.text,
+                                    password:
+                                        controller.passwordController.text,
+                                  );
+                                }
                               },
                             ),
                             const SizedBox(
