@@ -12,7 +12,7 @@ void main() async {
   );
   runApp(
     GetMaterialApp(
-      title: "Application",
+      title: "ThriftMee",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

@@ -81,4 +81,22 @@ class RegisterController extends GetxController {
     emailController.dispose();
     passwordController.dispose();
   }
+
+  String? validatePassword(String? value) {
+    if (value!.isEmpty) {
+      return 'Mohon isi terlebih dahulu';
+    } else if (value.length < 7) {
+      return 'Mohon lebih dari 7 passwordnya';
+    } else {
+      return null;
+    }
+  }
+
+  String? validateEmail(String? value) {
+    if (!value!.contains('@')) {
+      return 'Mohon terdapat @ pada inputan';
+    } else {
+      return null;
+    }
+  }
 }

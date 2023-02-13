@@ -69,6 +69,10 @@ class LoginController extends GetxController {
     }
   }
 
+  void toRegisterPage() {
+    Get.toNamed(Routes.REGISTER);
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -78,7 +82,22 @@ class LoginController extends GetxController {
     passwordController.dispose();
   }
 
-  void toRegisterPage() {
-    Get.toNamed(Routes.REGISTER);
+  String? validatePassword(String? value) {
+    if (value!.isEmpty) {
+      return 'Mohon isi terlebih dahulu';
+    } else if(value.length < 7) {
+      return 'Mohon lebih dari 7 passwordnya';
+    }
+     else {
+      return null;
+    }
+  }
+
+  String? validateEmail(String? value) {
+    if (!value!.contains('@')) {
+      return 'Mohon terdapat @ pada inputan';
+    } else {
+      return null;
+    }
   }
 }

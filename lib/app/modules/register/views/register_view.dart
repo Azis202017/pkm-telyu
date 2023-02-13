@@ -62,85 +62,90 @@ class RegisterView extends GetView<RegisterController> {
                       ),
                     ),
                     child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Daftar', style: headline4Bold),
-                          const SizedBox(height: 29),
-                          Text('Email', style: headline4Bold),
-                          const SizedBox(height: 13),
-                          InputWidget(
-                            controller: controller.emailController,
-                            hint: 'Masukkan email',
-                          ),
-                          const SizedBox(height: 21),
-                          Text('Password', style: headline4Bold),
-                          const SizedBox(height: 13),
-                          InputWidget(
-                            controller: controller.passwordController,
-                            onTap: controller.visiblePassword,
-                            isPassword: controller.isPassword,
-                            hint: 'Masukkan password',
-                            isVisibilityIcon: true,
-                            icon: controller.icon,
-                          ),
-                          const SizedBox(
-                            height: 69,
-                          ),
-                          ButtonWidgets(
-                            text: 'Daftar Akun',
-                            background: primaryColor,
-                            textStyle: buttonLinkLBold,
-                            isIconVisible: false,
-                            onPressed: () {
-                              controller.registerUser(
-                                email: controller.emailController.text,
-                                password: controller.passwordController.text,
-                              );
-                              Get.back();
-                            },
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          ButtonWidgets(
-                            text: 'Daftar dengan google',
-                            icon: 'assets/images/google.png',
-                            widthIcon: 24,
-                            heightIcon: 24,
-                            textColor: Colors.black,
-                            textStyle: buttonLinkLBold.copyWith(
-                              color: Colors.black,
+                      child: Form(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Daftar', style: headline4Bold),
+                            const SizedBox(height: 29),
+                            Text('Email', style: headline4Bold),
+                            const SizedBox(height: 13),
+                            InputWidget(
+                              controller: controller.emailController,
+                              validator: controller.validateEmail,
+                              hint: 'Masukkan email',
                             ),
-                            onPressed: controller.registrasiUserWithGoogle,
-                            background: borderColorInput,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.back();
-                            },
-                            child: Center(
-                              child: RichText(
-                                text: TextSpan(
-                                  text: 'Sudah punya akun?',
-                                  style: textDescription,
-                                  children: [
-                                    TextSpan(
-                                      text: ' Login disini',
-                                      style: textDescription.copyWith(
-                                        color: primaryColor,
-                                        fontWeight: FontWeight.w700,
+                            const SizedBox(height: 21),
+                            Text('Password', style: headline4Bold),
+                            const SizedBox(height: 13),
+                            InputWidget(
+                              controller: controller.passwordController,
+                              onTap: controller.visiblePassword,
+                              isPassword: controller.isPassword,
+                              validator: controller.validatePassword,
+                              hint: 'Masukkan password',
+                              isVisibilityIcon: true,
+                              icon: controller.icon,
+                            ),
+                            const SizedBox(
+                              height: 69,
+                            ),
+                            ButtonWidgets(
+                              text: 'Daftar Akun',
+                              background: primaryColor,
+                              textStyle: buttonLinkLBold,
+                              isIconVisible: false,
+                              onPressed: () {
+                                controller.registerUser(
+                                  email: controller.emailController.text,
+                                  password: controller.passwordController.text,
+                                );
+                                Get.back();
+                              },
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            ButtonWidgets(
+                              text: 'Daftar dengan google',
+                              icon: 'assets/images/google.png',
+                              widthIcon: 24,
+                              heightIcon: 24,
+                              textColor: Colors.black,
+                              textStyle: buttonLinkLBold.copyWith(
+                                color: Colors.black,
+                              ),
+                              onPressed: controller.registrasiUserWithGoogle,
+                              background: borderColorInput,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.back();
+                              },
+                              child: Center(
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: 'Sudah punya akun?',
+                                    style: textDescription,
+                                    children: [
+                                      TextSpan(
+                                        text: ' Login disini',
+                                        style: textDescription.copyWith(
+                                          color: primaryColor,
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

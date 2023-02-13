@@ -10,14 +10,17 @@ class InputWidget extends StatelessWidget {
   final String? icon;
   final bool? isVisibilityIcon;
   final void Function()? onTap;
-  const InputWidget(
-      {super.key,
-      this.controller,
-      this.hint,
-      this.isPassword = false,
-      this.isVisibilityIcon = false,
-      this.icon,
-      this.onTap});
+  final String? Function(String?)? validator;
+  const InputWidget({
+    super.key,
+    this.controller,
+    this.hint,
+    this.isPassword = false,
+    this.isVisibilityIcon = false,
+    this.icon,
+    this.onTap,
+    this.validator,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +29,27 @@ class InputWidget extends StatelessWidget {
       autocorrect: false,
       keyboardType: TextInputType.emailAddress,
       obscureText: isPassword != false ? true : false,
+      validator: validator,
       decoration: InputDecoration(
         border: InputBorder.none,
         enabled: true,
         hintText: hint,
         hintStyle: textPlaceholder,
+        focusedErrorBorder:  OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Colors.red.shade300,
+            width: 1,
+          ),
+        ), 
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            color: Colors.red.shade300,
+            width: 1,
+          ),
+        ),
+        errorStyle: errorTextStyle,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 13,
           horizontal: 13,

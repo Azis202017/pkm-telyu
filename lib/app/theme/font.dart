@@ -26,3 +26,7 @@ TextStyle textDescription = GoogleFonts.inter(
   fontSize: 16,
   color: Colors.black,
 );
+TextStyle errorTextStyle = GoogleFonts.inter(
+  fontSize: 14,
+  color: Colors.red.shade200,
+);

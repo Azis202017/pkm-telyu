@@ -46,96 +46,100 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Masuk', style: headline4Bold),
-                          const SizedBox(height: 29),
-                          Text('Email', style: headline4Bold),
-                          const SizedBox(height: 13),
-                          InputWidget(
-                            controller: controller.emailController,
-                            hint: 'Masukkan email',
-                          ),
-                          const SizedBox(height: 21),
-                          Text('Password', style: headline4Bold),
-                          const SizedBox(height: 13),
-                          InputWidget(
-                            controller: controller.passwordController,
-                            onTap: controller.visiblePassword,
-                            isPassword: controller.isPassword,
-                            hint: 'Masukkan password',
-                            isVisibilityIcon: true,
-                            icon: controller.icon,
-                          ),
-                          const SizedBox(
-                            height: 13,
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: Text(
-                              'Reset Password',
-                              textAlign: TextAlign.end,
-                              style: textPlaceholder.copyWith(
-                                color: primaryColor,
-                              ),
+                      child: Form(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Masuk', style: headline4Bold),
+                            const SizedBox(height: 29),
+                            Text('Email', style: headline4Bold),
+                            const SizedBox(height: 13),
+                            InputWidget(
+                              controller: controller.emailController,
+                              validator: controller.validateEmail,
+                              hint: 'Masukkan email',
                             ),
-                          ),
-                          const SizedBox(
-                            height: 69,
-                          ),
-                          ButtonWidgets(
-                            text: 'Masuk',
-                            background: primaryColor,
-                            textStyle: buttonLinkLBold,
-                            onPressed: () {
-                              controller.loginUser(
-                                email: controller.emailController.text,
-                                password: controller.passwordController.text,
-                              );
-                             
-                            },
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          ButtonWidgets(
-                            text: 'Masuk dengan google',
-                            icon: 'assets/images/google.png',
-                            widthIcon: 24,
-                            heightIcon: 24,
-                            textColor: Colors.black,
-                            isIconVisible: false,
-                            textStyle: buttonLinkLBold.copyWith(
-                              color: Colors.black,
+                            const SizedBox(height: 21),
+                            Text('Password', style: headline4Bold),
+                            const SizedBox(height: 13),
+                            InputWidget(
+                              controller: controller.passwordController,
+                              onTap: controller.visiblePassword,
+                              validator: controller.validatePassword,
+                              isPassword: controller.isPassword,
+                              hint: 'Masukkan password',
+                              isVisibilityIcon: true,
+                              icon: controller.icon,
                             ),
-                            onPressed: controller.loginUserWithGoogle,
-                            background: borderColorInput,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          GestureDetector(
-                            onTap: controller.toRegisterPage,
-                            child: Center(
-                              child: RichText(
-                                text: TextSpan(
-                                  text: 'Tidak punya akun?',
-                                  style: textDescription,
-                                  children: [
-                                    TextSpan(
-                                      text: ' Daftar disini',
-                                      style: textDescription.copyWith(
-                                        color: primaryColor,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ],
+                            const SizedBox(
+                              height: 13,
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              child: Text(
+                                'Reset Password',
+                                textAlign: TextAlign.end,
+                                style: textPlaceholder.copyWith(
+                                  color: primaryColor,
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 69,
+                            ),
+                            ButtonWidgets(
+                              text: 'Masuk',
+                              background: primaryColor,
+                              textStyle: buttonLinkLBold,
+                              isIconVisible: false,
+                              onPressed: () {
+                                controller.loginUser(
+                                  email: controller.emailController.text,
+                                  password: controller.passwordController.text,
+                                );
+                              },
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            ButtonWidgets(
+                              text: 'Masuk dengan google',
+                              icon: 'assets/images/google.png',
+                              widthIcon: 24,
+                              heightIcon: 24,
+                              textColor: Colors.black,
+                              textStyle: buttonLinkLBold.copyWith(
+                                color: Colors.black,
+                              ),
+                              onPressed: controller.loginUserWithGoogle,
+                              background: borderColorInput,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            GestureDetector(
+                              onTap: controller.toRegisterPage,
+                              child: Center(
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: 'Tidak punya akun?',
+                                    style: textDescription,
+                                    children: [
+                                      TextSpan(
+                                        text: ' Daftar disini',
+                                        style: textDescription.copyWith(
+                                          color: primaryColor,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
