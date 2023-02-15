@@ -7,6 +7,7 @@ import 'package:pakas/app/routes/app_pages.dart';
 class LoginController extends GetxController {
   FirebaseAuth authInstance = FirebaseAuth.instance;
   TextEditingController emailController = TextEditingController();
+  
   TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   final GoogleSignIn _googleSignIn = GoogleSignIn();

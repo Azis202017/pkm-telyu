@@ -1,4 +1,4 @@
-package com.abdulazisalayubbi.pakas
+package com.thriftmee
 
 import io.flutter.embedding.android.FlutterActivity
 
