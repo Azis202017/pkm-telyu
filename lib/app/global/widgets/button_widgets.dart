@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 class ButtonWidgets extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
+  final double? height;
   final Color? background;
   final bool? isIconVisible;
   final double? widthIcon;
   final double? heightIcon;
   final Color? textColor;
   final TextStyle? textStyle;
+  final double? radius;
   final String? icon;
+  final double? width;
+  final double? elevation;
   const ButtonWidgets({
     super.key,
     required this.text,
@@ -21,21 +25,24 @@ class ButtonWidgets extends StatelessWidget {
     this.textStyle,
     this.widthIcon,
     this.heightIcon,
+    this.height,
+    this.radius,
+    this.width,
+    this.elevation,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: 47,
+      width: width,
+      height: height,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: background,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            
+            borderRadius: BorderRadius.circular(radius ?? 0),
           ),
-          elevation: 0
+          elevation: elevation ?? 0,
         ),
         onPressed: onPressed,
         child: Row(

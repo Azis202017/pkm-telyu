@@ -10,6 +10,10 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
   static const BOTTOM_NAV = _Paths.BOTTOM_NAV;
+  static const AUGMENTED_REALITY = _Paths.AUGMENTED_REALITY;
+  static const GET_STARTED = _Paths.GET_STARTED;
+  static const PROFILE = _Paths.PROFILE;
+  static const UBAH_PROFILE = _Paths.UBAH_PROFILE;
 }
 
 abstract class _Paths {
@@ -19,4 +23,8 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const BOTTOM_NAV = '/bottom-nav';
+  static const AUGMENTED_REALITY = '/augmented-reality';
+  static const GET_STARTED = '/get-started';
+  static const PROFILE = '/profile';
+  static const UBAH_PROFILE = '/ubah-profile';
 }

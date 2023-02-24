@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/bottom_nav_controller.dart';
+import '../controllers/profile_controller.dart';
 
-class BottomNavView extends GetView<BottomNavController> {
-  const BottomNavView({Key? key}) : super(key: key);
+class ProfileView extends GetView<ProfileController> {
+  const ProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BottomNavView'),
+        title: const Text('ProfileView'),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          'BottomNavView is working',
+          'ProfileView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

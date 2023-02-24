@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,19 +49,9 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAIur8y9b7FASBh-BAiEV8f4q_H_K3OaaA',
-    appId: '1:1021778336572:web:3372db4c13eed7e54e5c39',
-    messagingSenderId: '1021778336572',
-    projectId: 'pkm-telyu',
-    authDomain: 'pkm-telyu.firebaseapp.com',
-    storageBucket: 'pkm-telyu.appspot.com',
-    measurementId: 'G-7VF227LDPX',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAIx8ihkXGRdbAoEtMV9tGG_W6H4pr_iaA',
-    appId: '1:1021778336572:android:5a54a4e8d29c56554e5c39',
+    appId: '1:1021778336572:android:a4de87ed6daa288f4e5c39',
     messagingSenderId: '1021778336572',
     projectId: 'pkm-telyu',
     storageBucket: 'pkm-telyu.appspot.com',
@@ -63,20 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD7i0TNkeFVPWEY0lz37GGhYQcla7c4aA0',
-    appId: '1:1021778336572:ios:43c00bbc8c3678854e5c39',
+    appId: '1:1021778336572:ios:66ac5eda5f8b19f94e5c39',
     messagingSenderId: '1021778336572',
     projectId: 'pkm-telyu',
     storageBucket: 'pkm-telyu.appspot.com',
-    iosClientId: '1021778336572-bs6dmci2tp5007pd470pks2cels1lj4b.apps.googleusercontent.com',
-    iosBundleId: 'com.abdulazisalayubbi.pakas',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD7i0TNkeFVPWEY0lz37GGhYQcla7c4aA0',
-    appId: '1:1021778336572:ios:43c00bbc8c3678854e5c39',
-    messagingSenderId: '1021778336572',
-    projectId: 'pkm-telyu',
-    storageBucket: 'pkm-telyu.appspot.com',
+    androidClientId: '1021778336572-3ji1ojrfujr93d0h2shl0j88rnecrg6q.apps.googleusercontent.com',
     iosClientId: '1021778336572-bs6dmci2tp5007pd470pks2cels1lj4b.apps.googleusercontent.com',
     iosBundleId: 'com.abdulazisalayubbi.pakas',
   );
